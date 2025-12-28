@@ -1,62 +1,50 @@
-import java.util.Scanner;
+public class Calculator 
+{
 
-class Calculator
+    double a, b;
+    String operation;
+
+    public Calculator(double a, double b, String operation)
   {
-    double add(double a, double b)
-    {
-        return a + b;
+        this.a = a;
+        this.b = b;
+        this.operation = operation.toLowerCase();
     }
 
-    double subtract(double a, double b)
-    {
-        return a - b;
-    }
-
-    double multiply(double a, double b) 
-    {
-        return a * b;
-    }
-
-    double divide(double a, double b)
-    {
-        if (b == 0)
-        {
-            System.out.println("Division by zero not allowed");
-            return 0;
-        }
-        return a / b;
-    }
-}
-
-public class Problem1
+    public double calculate() 
   {
-    public static void main(String[] args)
-    {
-        Scanner sc = new Scanner(System.in);
-        Calculator calc = new Calculator();
-
-        double a = sc.nextDouble();
-        double b = sc.nextDouble();
-        String operation = sc.next();
-
         switch (operation) 
         {
             case "add":
-                System.out.println(calc.add(a, b));
-                break;
+                return a + b;
             case "subtract":
-                System.out.println(calc.subtract(a, b));
-                break;
+                return a - b;
             case "multiply":
-                System.out.println(calc.multiply(a, b));
-                break;
+                return a * b;
             case "divide":
-                System.out.println(calc.divide(a, b));
-                break;
+                if (b == 0) 
+                {
+                    System.out.println("Division by zero is not allowed");
+                    return Double.NaN;
+                }
+                return a / b;
             default:
                 System.out.println("Invalid operation");
+                return Double.NaN;
         }
+    }
 
-        sc.close();
+    public static void main(String[] args) {
+        Calculator calc = new Calculator(10, 5, "add");
+        System.out.println("Addition: " + calc.calculate());
+
+        calc = new Calculator(10, 5, "subtract");
+        System.out.println("Subtraction: " + calc.calculate());
+
+        calc = new Calculator(10, 5, "multiply");
+        System.out.println("Multiplication: " + calc.calculate());
+
+        calc = new Calculator(10, 0, "divide");
+        System.out.println("Division: " + calc.calculate());
     }
 }
