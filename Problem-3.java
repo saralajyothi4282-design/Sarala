@@ -1,25 +1,20 @@
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Problem3
-  {
-    public static void main(String[] args)
-    {
-        Scanner sc = new Scanner(System.in);
-        int a = sc.nextInt();
+public class OddSeries2 {
 
-        if (a <= 0) 
-        {
-            System.out.println("Invalid input");
-            return;
-        }
-
+    public static List<Integer> generateConditionalOddSeries(int a) {
+        List<Integer> oddNumbers = new ArrayList<>();
         int limit = (a % 2 == 0) ? a - 1 : a;
 
-        for (int i = 1; i <= limit * 2; i += 2)
-          {
-            System.out.print(i + " ");
+        for (int i = 1; i <= limit; i += 2) {
+            oddNumbers.add(i);
         }
+        return oddNumbers;
+    }
 
-        sc.close();
+    public static void main(String[] args) {
+        int a = 6;
+        System.out.println("Input a = " + a + ", Output: " + generateConditionalOddSeries(a));
     }
 }
